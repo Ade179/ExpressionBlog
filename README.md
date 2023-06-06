@@ -86,7 +86,7 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-Log in with your email and follow the prompts. It will be a fun experience
+rails db:create, rails db:migrate, rails server. Then log in or sign-up  with your email and follow the prompts. It will be a fun experience
 ```
 
 ### 🧪 Run tests
