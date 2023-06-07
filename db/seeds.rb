@@ -11,4 +11,9 @@ first_post = Post.create(author: first_user, title: 'Hello', text: 'This is my f
 second_post = Post.create(author: first_user, title: 'Hey', text: 'This is my second post')
 third_post = Post.create(author: first_user, title: 'Hi', text: 'This is my third post')
 fourth_post = Post.create(author: first_user, title: 'Hoot', text: 'This is my fourth post')
-
+comment_1 = Comment.create(post: first_post, author: second_user, text: 'Hi Tom!' )
+comment_2 = Comment.create(post: first_post, author: first_user, text: 'Hey Tom!' )
+comment_3 = Comment.create(post: first_post, author: second_user, text: 'Hey Tomas!' )
+comment_4 = Comment.create(post: first_post, author: first_user, text: 'Hi Tuchel!' )
+comment_5 = Comment.create(post: first_post, author: second_user, text: 'what a post!' )
+comment_6 = Comment.create(post: first_post, author: first_user, text: 'Underrated to be honest!' )
