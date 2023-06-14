@@ -1,1 +1,17 @@
-<h1>Here is a list of post for a given user</h1>
+<div class="big-box">
+    <div class="head"><h2><%= @post.title%> by <%=@user.name%> </h2>
+    <div><span>comments:<%=@post.comments_counter %></span>
+    <span>likes:<%=@post.likes_counter%></span> </div> </div>
+
+
+<p><%= @post.text %></p>
+</div>
+
+<div class="big-box">
+    <h2>comments</h2>
+<% @post.comments.each do |comment|%>
+
+<p><%= comment.author.name %>:<%= comment.text%> </p>
+
+<% end%>
+</div>

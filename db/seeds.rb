@@ -5,6 +5,7 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+
 first_user = User.create(name: 'Tom', photo: "https://picsum.photos/300/500", bio: 'Teacher from Mexico.')
 second_user = User.create(name: 'Lilly', photo: "https://picsum.photos/300/500", bio: 'Teacher from Poland.')
 first_post = Post.create(author: first_user, title: 'Hello', text: 'This is my first post')
