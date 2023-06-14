@@ -1,13 +1,7 @@
-<a name="readme-top"></a>
 
-<div align="center">
-  <!-- You are encouraged to replace this logo with your own! Otherwise you can also remove it. -->
-  <img src="murple_logo.png" alt="logo" width="140"  height="auto" />
-  <br/>
+  <h3><b>Expression Blog</b></h3>
 
-  <h3><b>My Blog</b></h3>
 
-</div>
 
 
 ## 📗 Table of Contents
@@ -30,9 +24,8 @@
   - [📜 License ](#-license-)
 
 
-# 📦 Catalogue of Possessions <a name="about-project"></a>
-
-This is a console app which allows users to store and manage data about their possessions including books, music albums and games.
+# 📦Expression Blog <a name="about-project"></a>
+This app allows you post  comment and like while blogging
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -93,7 +86,7 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-
+rails db:create, rails db:migrate, rails server. Then log in or sign-up  with your email and follow the prompts. It will be a fun experience
 ```
 
 ### 🧪 Run tests
