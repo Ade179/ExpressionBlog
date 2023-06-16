@@ -93,7 +93,7 @@ Install this project with:
 To run the project, execute the following command:
 
 ```sh
-
+rails server or rails s
 ```
 
 ### 🧪 Run tests
