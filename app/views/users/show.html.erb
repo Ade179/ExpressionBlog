@@ -1,18 +1,26 @@
-<h1>Here is a specific user</h1>
+<header class='header'><h1>Here is a specific user</h1></header>
+<div class='picandpost'>
 <img class="img" src="<%= @user.photo %>" alt="profile_pic">
 <%= @user.name%>
+<span class='span'>number of posts:  <%= @user.posts_counter%> </span>
+</div>
 
-<%= @user.posts_counter%>
-
+<div class='bio'>
+<span class='span'>Bio</span>
 <%= @user.bio%>
+</div>
 
 <% @user.posts.each do |d|%>
+  <div class='postcomments'>
   <p><%= link_to d.title, user_post_path(@user,d)%></p>
     <p> <%= d.text %></p>
+    </div>
 <%end%>
+<div class='postlinks'>
 <div>
 <%= link_to "Add New Post", "/users/#{@user.id}/posts/new" %>
 </div>
-
+<div>
 <%= link_to "see all posts", user_posts_path(@user)%>
-
+</div>
+</div>
