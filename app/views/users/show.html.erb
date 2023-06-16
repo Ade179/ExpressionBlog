@@ -7,9 +7,12 @@
 <%= @user.bio%>
 
 <% @user.posts.each do |d|%>
-  <p> <%= d.title %></p>
+  <p><%= link_to d.title, user_post_path(@user,d)%></p>
     <p> <%= d.text %></p>
 <%end%>
+<div>
+<%= link_to "Add New Post", "/users/#{@user.id}/posts/new" %>
+</div>
 
 <%= link_to "see all posts", user_posts_path(@user)%>
 
