@@ -7,6 +7,11 @@
 <p><%= @post.text %></p>
 </div>
 
+<%= render partial: "create_comments",  local: { post: @post } %>
+<%= form_with url: "/posts/#{@post.id}/likes", scope: :like do |f| %>
+<%= f.submit "Like this post" %>
+<% end %>
+
 <div class="big-box">
     <h2>comments</h2>
 <% @post.comments.each do |comment|%>

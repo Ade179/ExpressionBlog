@@ -1,17 +1,26 @@
-<h1>All posts</h1>
+<header class='header'><h1>All posts</h1></header>
+<div class='picandpost'>
 <img class="img" src="<%= @user.photo %>" alt="profile_pic">
+
 <%=@user.name %>
-<span>number of posts:  <%= @user.posts_counter%> </span>
+<span class='span'>number of posts:  <%= @user.posts_counter%> </span>
+
+</div>
 
 <% @posts.each do |post| %>
-
+<div class='allposts'>
 <p><%= link_to post.title, user_post_path(@user,post)%></p>
 <p><%= post.text%></p>
+<div class="cl">
 <p>comment:<%=post.comments_counter %></p>
 <p>likes:<%=post.likes_counter%></p>
+</div>
+</div>
+<div class='postcomments'>
 <h3> comments </h3>
  <%post.comments.each do |comment|%>
  <p><%=comment.author.name %>: <%=comment.text %></p>
  <%end%>
+ </div>
 <%end%>
 
