@@ -3,7 +3,7 @@
 <%=@user.name %>
 <span>number of posts:  <%= @user.posts_counter%> </span>
 
-<% @post.each do |post| %>
+<% @posts.each do |post| %>
 
 <p><%= link_to post.title, user_post_path(@user,post)%></p>
 <p><%= post.text%></p>

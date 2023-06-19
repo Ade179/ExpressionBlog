@@ -32,13 +32,5 @@ class PostsController < ApplicationController
 
   def post_data
     params.require(:post).permit(:title, :text)
-
-    @post = @user.posts.order(created_at: :desc)
-  end
-
-  def show
-    @user = User.find(params[:user_id])
-    @post = Post.find(params[:id])
-
   end
 end
