@@ -1,0 +1,15 @@
+<h1>Here is a specific user</h1>
+<img class="img" src="<%= @user.photo %>" alt="profile_pic">
+<%= @user.name%>
+
+<%= @user.posts_counter%>
+
+<%= @user.bio%>
+
+<% @user.posts.each do |d|%>
+  <p> <%= d.title %></p>
+    <p> <%= d.text %></p>
+<%end%>
+
+<%= link_to "see all posts", user_posts_path(@user)%>
+
