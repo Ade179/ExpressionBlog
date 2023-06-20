@@ -6,6 +6,7 @@ FactoryBot.define do
     photo { 'https://example.com/photo.jpg' }
     bio { 'This is my bio.' }
     posts_counter { 0 }
+    association :post
     created_at { Time.now }
     updated_at { Time.now }
   end

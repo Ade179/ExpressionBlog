@@ -22,7 +22,8 @@ class PostsController < ApplicationController
         if post.save
           redirect_to "/users/#{post.author_id}/posts/", notice: 'Success Post Saved!'
         else
-          render :new, status: 'Error occured with Post!'
+          flash.now[:error] = 'Error occurred with Post!'
+          render :new, status: :unprocessable_entity
         end
       end
     end
