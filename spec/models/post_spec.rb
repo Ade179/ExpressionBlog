@@ -9,7 +9,7 @@ RSpec.describe Post, type: :model do
   # Test callbacks
   describe 'after_save' do
     let(:author) { create(:user) }
-    let(:post) { build(:post, author: author) }
+    let(:post) { build(:post, author:) }
 
     it 'increments posts_counter of the author' do
       expect { post.save }.to change { author.reload.posts_counter }.by(1)
