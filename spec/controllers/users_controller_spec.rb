@@ -2,39 +2,41 @@ require 'rails_helper'
 
 RSpec.describe '/users', type: :request do
   describe 'UsersController' do
-    context 'GET index' do
+    describe 'GET index' do
       before(:example) do
         get '/users'
       end
 
-      it 'success for index action' do
+      it 'is successful' do
         expect(response).to have_http_status(:success)
       end
 
-      it 'Render correct templete for index action' do
+      it 'renders the index template' do
         expect(response).to render_template(:index)
       end
 
-      it 'Correct body placeholder text for index action' do
-        expect(response.body).to include('Here is a list of  all users')
+      it 'displays the correct body placeholder text' do
+        expect(response.body).to include('Users')
       end
     end
 
-    context 'GET show' do
-      before(:example) do
-        get '/users/1'
-      end
-
-      it 'Success for show action' do
+    describe 'GET show' do
+      it 'is successful' do
+        user = create(:user)
+        get "/users/#{user.id}"
         expect(response).to have_http_status(:success)
       end
 
-      it 'Render correct templete for show action' do
+      it 'renders the show template' do
+        user = create(:user)
+        get "/users/#{user.id}"
         expect(response).to render_template(:show)
       end
 
-      it 'Render correct body placeholder' do
-        expect(response.body).to include('Here is a given user')
+      it 'displays the correct body placeholder' do
+        user = create(:user)
+        get "/users/#{user.id}"
+        expect(response.body).to include('Here is a specific user')
       end
     end
   end

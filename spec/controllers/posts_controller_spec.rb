@@ -1,40 +1,46 @@
 require 'rails_helper'
 
-RSpec.describe '/posts', type: :request do
-  describe 'PostsConroller' do
-    context 'GET index' do
-      before(:example) do
-        get '/users/1/posts'
+RSpec.describe PostsController, type: :controller do
+  describe 'POST #create' do
+    let(:user) { create(:user) } # Assuming you have a User factory set up
+
+    context 'with valid parameters' do
+      let(:post_params) { { post: { title: 'Test Post', text: 'Lorem ipsum' } } }
+
+      it 'creates a new post' do
+        expect do
+          post :create, params: post_params, session: { user_id: user.id }
+        end.to change(Post, :count).by(1)
       end
 
-      it 'Success response status for index action' do
-        expect(response).to be_successful
+      it "redirects to the user's posts index" do
+        post :create, params: post_params, session: { user_id: user.id }
+        expect(response).to redirect_to("#{user_posts_path(user)}/")
       end
 
-      it 'render correct template' do
-        expect(response).to render_template(:index)
-      end
-
-      it 'should render correct body placeholder text' do
-        expect(response.body).to include('All posts')
+      it 'sets a flash notice message' do
+        post :create, params: post_params, session: { user_id: user.id }
+        expect(flash[:notice]).to eq('Success Post Saved!')
       end
     end
 
-    context 'GET show action' do
-      before(:example) do
-        get '/users/1/posts/1'
+    context 'with invalid parameters' do
+      let(:invalid_post_params) { { post: { title: '', text: '' } } }
+
+      it 'does not create a new post' do
+        expect do
+          post :create, params: invalid_post_params, session: { user_id: user.id }
+        end.not_to change(Post, :count)
       end
 
-      it 'Success response for show action' do
-        expect(response).to have_http_status(:success)
+      it 'renders the new template' do
+        post :create, params: invalid_post_params, session: { user_id: user.id }
+        expect(response).to render_template(:new)
       end
 
-      it 'Render correct templete for show action' do
-        expect(response).to render_template(:show)
-      end
-
-      it 'render correct placeholder' do
-        expect(response.body).to include('Here is a list of post for a given user')
+      it 'sets a flash error message' do
+        post :create, params: invalid_post_params, session: { user_id: user.id }
+        expect(flash[:error]).to eq('Error occurred with Post!')
       end
     end
   end

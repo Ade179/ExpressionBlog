@@ -7,7 +7,7 @@
 
 </div>
 
-<% @post.each do |post| %>
+<% @posts.each do |post| %>
 <div class='allposts'>
 <p><%= link_to post.title, user_post_path(@user,post)%></p>
 <p><%= post.text%></p>
@@ -23,4 +23,5 @@
  <%end%>
  </div>
 <%end%>
+<button class="see-all-button"><%=  link_to  "Pagination", user_posts_path(@user) %></button>
 

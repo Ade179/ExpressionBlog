@@ -9,7 +9,10 @@ require 'rspec/rails'
 require 'factory_bot_rails'
 
 # Add additional requires below this line. Rails is not loaded until this point!
-
+require 'capybara/rspec'
+require 'bullet'
+require 'selenium-webdriver'
+require 'pry'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -47,7 +50,7 @@ RSpec.configure do |config|
   config.include FactoryBot::Syntax::Methods
   # You can uncomment this line to turn off ActiveRecord support entirely.
   # config.use_active_record = false
-
+  config.include Capybara::DSL
   # RSpec Rails can automatically mix in different behaviours to your tests
   # based on their file location, for example enabling you to call `get` and
   # `post` in specs under `spec/controllers`.

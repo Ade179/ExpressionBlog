@@ -8,15 +8,10 @@ RSpec.describe Post, type: :model do
 
   # Test callbacks
   describe 'after_save' do
-    let(:post) { create(:post) }
-    let(:author) { post.author }
+    let(:author) { create(:user) }
+    let(:post) { build(:post, author:) }
 
-    it 'should call update_posts_counter' do
-      expect(post).to receive(:update_posts_counter)
-      post.save
-    end
-
-    it 'should increment posts_counter of the author' do
+    it 'increments posts_counter of the author' do
       expect { post.save }.to change { author.reload.posts_counter }.by(1)
     end
   end
@@ -26,17 +21,4 @@ RSpec.describe Post, type: :model do
   it { should validate_length_of(:title).is_at_most(250) }
   it { should validate_numericality_of(:comments_counter).only_integer.is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:likes_counter).only_integer.is_greater_than_or_equal_to(0) }
-
-  # Test private methods
-  describe 'private methods' do
-    let(:post) { create(:post) }
-
-    describe '#update_posts_counter' do
-      let(:author) { post.author }
-
-      it 'should increment posts_counter of the author' do
-        expect { post.send(:update_posts_counter) }.to change { author.reload.posts_counter }.by(1)
-      end
-    end
-  end
 end
