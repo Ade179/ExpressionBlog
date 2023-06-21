@@ -136,3 +136,18 @@ form {
 .nameandnum {
   border: 2px solid black;
 }
+
+
+.form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+}
+
+a {
+  text-decoration: none;
+}
+
+

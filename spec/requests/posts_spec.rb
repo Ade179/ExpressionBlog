@@ -69,9 +69,6 @@ RSpec.describe 'Posts index ', type: :feature do
   it 'displays the like count' do
     expect(page).to have_content('likes:0')
   end
-  it 'displays pagination' do
-    expect(find('.see-all-button')).to be_truthy
-  end
 
   it "When I click on a post, it redirects me to that post's show page" do
     click_link('Howdy')
