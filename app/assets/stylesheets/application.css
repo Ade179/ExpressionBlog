@@ -150,4 +150,34 @@ a {
   text-decoration: none;
 }
 
+.login {
+  width: 300px;
+  padding: 10px;
+}
 
+.login-button {
+  width: 300px;
+  padding: 10px;
+}
+
+.links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.h2 {
+  text-align: center;
+}
+
+.padder {
+  padding: 50px;
+}
+
+.destroy {
+  background-color: red;
+  padding: 20px;
+  color: white;
+  border: none;
+}
