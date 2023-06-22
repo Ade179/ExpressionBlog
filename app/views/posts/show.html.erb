@@ -11,7 +11,9 @@
   <p><%= @post.text %></p>
 </div>
 
-
+<% if can? :create, Comment %>
+  <%= render partial: "create_comments", locals: { post: @post } %>
+<% end %>
 
 <%= form_with url: post_likes_path(@post), scope: :like do |f| %>
   <%= f.submit "Like this post" %>
@@ -21,5 +23,10 @@
   <h2>Comments</h2>
   <% @post.comments.each do |comment| %>
     <p><%= comment.author.name %>: <%= comment.text %></p>
+
+    <% if can? :destroy, comment %>
+      <%= button_to 'delete comment', post_comment_path(@post, comment), method: :delete, class: 'post_btn' %>
+    <% end %>
+  <% end %>
   
 </div>
